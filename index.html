@@ -1,39 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://day-guesser.vercel.app/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Day Guesser</title>
-</head>
-<body>
-    <header></header>
-    <div class="container">
-        <h1 class="blue">A hét melyik napjára esik a dátum?</h1>
-        <h3 id="date"></h3>
-        <p>Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect"></span> - <span class="blue">Nullázás</span></p>
-        <div class="days">
-            <button>Hétfő</button>
-            <button>Kedd</button>
-            <button>Szerda</button>
-            <button>Csutortok</button>
-            <button>Péntek</button>
-            <button>Szombat</button>
-            <button>Vasárnap</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            href="https://day-guesser.vercel.app/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="./styles.css" />
+        <title>Day Guesser</title>
+    </head>
+    <body>
+        <header></header>
+        <div class="container">
+            <h1 class="blue">A hét melyik napjára esik a dátum?</h1>
+            <h3 id="date"></h3>
+            <p>
+                Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect">0</span> - <span class="blue">Nullázás</span>
+            </p>
+            <div class="days">
+                <button onclick="checkAnswer(1)">Hetfo</button>
+                <button onclick="checkAnswer(2)">Kedd</button>
+                <button onclick="checkAnswer(3)">Szerda</button>
+                <button onclick="checkAnswer(4)">Csutortok</button>
+                <button onclick="checkAnswer(5)">Pentek</button>
+                <button onclick="checkAnswer(6)">Szombat</button>
+                <button onclick="checkAnswer(0)">Vasarnap</button>
+            </div>
         </div>
-    </div>
-    <footer>
-        <div>
-            <p>Kezdő Év</p>
-            <input type="number" id="min-year">
-        </div>
-        <div>
-            <p>Záró Év</p>
-            <input type="number" id="max-year">
-        </div>
-    </footer>
+        <footer>
+            <div>
+                <p>Kezdő Év</p>
+                <div>
+                    <input
+                        id="min-year"
+                        type="text"
+                        max="3000"
+                        min="1000"
+                        step="1"
+                        inputmode="numeric"
+                        aria-invalid="false"
+                        value="1000"
+                    />
+                    <div>
+                        <button onclick="setYear('min')">
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style="transform: rotate(180deg)"
+                            >
+                                <path
+                                    d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </button>
+                        <button onclick="setYear('max')">
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style="transform: rotate(0deg)"
+                            >
+                                <path
+                                    d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>Záró Év</p>
+                <div>
+                    <input
+                        id="max-year"
+                        type="text"
+                        max="9999"
+                        min="1000"
+                        step="1"
+                        inputmode="numeric"
+                        aria-invalid="false"
+                        value="3000"
+                    />
+                    <div>
+                        <button onclick="setYear('min')">
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style="transform: rotate(180deg)"
+                            >
+                                <path
+                                    d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </button>
+                        <button onchange="setYear('max')">
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style="transform: rotate(0deg)"
+                            >
+                                <path
+                                    d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    <script src="./script.js"></script>
-</body>
+        <script src="./script.js"></script>
+    </body>
 </html>
