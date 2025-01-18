@@ -8,11 +8,12 @@
     <title>Day Guesser</title>
 </head>
 <body>
+    <header></header>
     <div class="container">
-        <h1>A hét melyik napjára esik a dátum?</h1>
+        <h1 class="blue">A hét melyik napjára esik a dátum?</h1>
         <h3 id="date"></h3>
-        <p>Helyes: <span id="correct">0</span>, Helytelen: <div id="incorrect"></div></p>
-        <div>
+        <p>Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect"></span> - <span class="blue">Nullázás</span></p>
+        <div class="days">
             <button>Hétfő</button>
             <button>Kedd</button>
             <button>Szerda</button>
@@ -22,6 +23,16 @@
             <button>Vasárnap</button>
         </div>
     </div>
+    <footer>
+        <div>
+            <p>Kezdő Év</p>
+            <input type="number" id="min-year">
+        </div>
+        <div>
+            <p>Záró Év</p>
+            <input type="number" id="max-year">
+        </div>
+    </footer>
 
     <script src="./script.js"></script>
 </body>
