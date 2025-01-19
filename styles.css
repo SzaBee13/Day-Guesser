@@ -17,12 +17,33 @@ body {
     gap: 0;
 }
 
+#before {
+    color: gray;
+}
+
 header, footer {
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+header > button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: medium;
+}
+
+header > button:hover {
+    background-color: #25262b;
+}
+
+header > button.active {
+    background-color: #266dbd;
 }
 
 footer > div > div {

@@ -13,28 +13,31 @@
     </head>
     <body>
         <header>
-            <button>English</button>
-            <button>Magyar</button>
+            <button id="en" onclick="setLang('en')">English</button>
+            <button id="hu" class="active" onclick="setLang('hu')">Magyar</button>
         </header>
         <div class="container">
-            <h1 class="blue">A hét melyik napjára esik a dátum?</h1>
+            <h1 class="blue" id="main-h1">A hét melyik napjára esik a dátum?</h1>
             <h3 id="date"></h3>
-            <p>
+            <p id="before">
+                Előző: <span id="be-date"></span>, <span id="be-day"></span>
+            </p>
+            <p id="ci">
                 Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect">0</span> - <span class="blue" onclick="nullAnswer()">Nullázás</span>
             </p>
             <div class="days">
-                <button onclick="checkAnswer(1)">Hetfő</button>
-                <button onclick="checkAnswer(2)">Kedd</button>
-                <button onclick="checkAnswer(3)">Szerda</button>
-                <button onclick="checkAnswer(4)">Csütörtök</button>
-                <button onclick="checkAnswer(5)">Péntek</button>
-                <button onclick="checkAnswer(6)">Szombat</button>
-                <button onclick="checkAnswer(0)">Vasárnap</button>
+                <button onclick="checkAnswer(1)" id="day1">Hetfő</button>
+                <button onclick="checkAnswer(2)" id="day2">Kedd</button>
+                <button onclick="checkAnswer(3)" id="day3">Szerda</button>
+                <button onclick="checkAnswer(4)" id="day4">Csütörtök</button>
+                <button onclick="checkAnswer(5)" id="day5">Péntek</button>
+                <button onclick="checkAnswer(6)" id="day6">Szombat</button>
+                <button onclick="checkAnswer(0)" id="day0">Vasárnap</button>
             </div>
         </div>
         <footer>
             <div>
-                <p>Kezdő Év</p>
+                <p id="open-year">Kezdő Év</p>
                 <div>
                     <input
                         id="min-year"
@@ -85,7 +88,7 @@
                 </div>
             </div>
             <div>
-                <p>Záró Év</p>
+                <p id="close-year">Záró Év</p>
                 <div>
                     <input
                         id="max-year"
