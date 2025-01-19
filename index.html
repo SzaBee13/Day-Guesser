@@ -12,21 +12,24 @@
         <title>Day Guesser</title>
     </head>
     <body>
-        <header></header>
+        <header>
+            <button>English</button>
+            <button>Magyar</button>
+        </header>
         <div class="container">
             <h1 class="blue">A hét melyik napjára esik a dátum?</h1>
             <h3 id="date"></h3>
             <p>
-                Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect">0</span> - <span class="blue">Nullázás</span>
+                Helyes: <span id="correct">0</span>, Helytelen: <span id="incorrect">0</span> - <span class="blue" onclick="nullAnswer()">Nullázás</span>
             </p>
             <div class="days">
-                <button onclick="checkAnswer(1)">Hetfo</button>
+                <button onclick="checkAnswer(1)">Hetfő</button>
                 <button onclick="checkAnswer(2)">Kedd</button>
                 <button onclick="checkAnswer(3)">Szerda</button>
-                <button onclick="checkAnswer(4)">Csutortok</button>
-                <button onclick="checkAnswer(5)">Pentek</button>
+                <button onclick="checkAnswer(4)">Csütörtök</button>
+                <button onclick="checkAnswer(5)">Péntek</button>
                 <button onclick="checkAnswer(6)">Szombat</button>
-                <button onclick="checkAnswer(0)">Vasarnap</button>
+                <button onclick="checkAnswer(0)">Vasárnap</button>
             </div>
         </div>
         <footer>
@@ -44,7 +47,7 @@
                         value="1000"
                     />
                     <div>
-                        <button onclick="setYear('min')">
+                        <button onclick="setYear('min', 'up')">
                             <svg
                                 width="14"
                                 height="14"
@@ -61,7 +64,7 @@
                                 ></path>
                             </svg>
                         </button>
-                        <button onclick="setYear('max')">
+                        <button onclick="setYear('min', 'down')">
                             <svg
                                 width="14"
                                 height="14"
@@ -95,7 +98,7 @@
                         value="3000"
                     />
                     <div>
-                        <button onclick="setYear('min')">
+                        <button onclick="setYear('max', 'up')">
                             <svg
                                 width="14"
                                 height="14"
@@ -112,7 +115,7 @@
                                 ></path>
                             </svg>
                         </button>
-                        <button onchange="setYear('max')">
+                        <button onchange="setYear('max', 'down')">
                             <svg
                                 width="14"
                                 height="14"

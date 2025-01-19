@@ -7,9 +7,14 @@ const dateBetween = (start, end) => {
 }
 
 const dateText = document.getElementById("date");
+const minInput = document.getElementById("min-year");
+const maxInput = document.getElementById("max-year");
 
 let min = "1000-01-01"
 let max = "3000-01-01"
+let miy = 1000
+let may = 3000
+
 let currentDate = dateBetween(
     new Date(max),
     new Date(min)
@@ -31,31 +36,67 @@ const checkAnswer = (answer) => {
         incorrect += 1;
         incorrectText.textContent = incorrect;
     }
+    local("set")
 
     currentDate = dateBetween(
         new Date(max),
         new Date(min)
     );
     dateText.textContent = currentDate.toLocaleDateString();
+    console.log(`${min}, ${max}, ${correct}, ${incorrect}`)
 }
 
-const local = (td, value=null) => {
+const local = (td) => {
     if (td == "load") {
-        correct = parseInt(localStorage.getItem("correct"))
-        incorrect = parseInt(localStorage.getItem("incorrect"))
+        if (localStorage.getItem("correct")) {
+            correct = parseInt(localStorage.getItem("correct"));
+            correctText.innerHTML = correct;
+        } else {
+            correct = 0;
+            localStorage.setItem("correct", correct)
+            correctText.innerHTML = correct;
+        }
+        if (localStorage.getItem("incorrect")) {
+            incorrect = parseInt(localStorage.getItem("incorrect"));
+            incorrectText.innerHTML = incorrect;
+        } else {
+            incorrect = 0;
+            localStorage.setItem("incorrect", incorrect)
+            incorrectText.innerHTML = incorrect
+        }
+        if (localStorage.getItem("min")) {
+            miy = parseInt(localStorage.getItem("min"));
+            minInput.value = miy;
+        } else {
+            miy = 1000;
+            localStorage.setItem("min", miy);
+            minInput.value = miy;
+        }
+        if (localStorage.getItem("max")) {
+            may = parseInt(localStorage.getItem("max"));
+            maxInput.value = may;
+        } else {
+            may = 3000;
+            localStorage.setItem("max", may);
+            maxInput.value = may;
+        }
     } else if (td == "clear"){
-        localStorage.setItem("correct", 0)
-        localStorage.setItem("incorrect", 0)
+        localStorage.setItem("correct", 0);
+        localStorage.setItem("incorrect", 0);
     } else if (td == "set") {
-        localStorage.setItem("correct", value)
-        localStorage.setItem("incorrect", value)
+        localStorage.setItem("correct", correct);
+        localStorage.setItem("incorrect", incorrect);
+        localStorage.setItem("min", miy);
+        localStorage.setItem("max", may);
     }
 }
 
 const nullAnswer = () => {
-    correct = 0
-    incorrect = 0
-    local("clear")
+    correct = 0;
+    correctText.innerHTML = correct;
+    incorrect = 0;
+    incorrectText.innerHTML = incorrect;
+    local("clear");
 }
 
 const init = () => {
@@ -66,13 +107,28 @@ const init = () => {
     );
 }
 
-const setYear = (n) => {
+const setYear = (n, ud=null) => {
     if (n == "min") {
-        min = parseInt(document.getElementById("min-year").value)
+        if (ud == "up") {
+            miy += 1;
+        } else if (ud == "down") {
+            miy -= 1;
+        }
+        min = `${miy}-01-01`;
+        minInput.value = miy;
+        maxInput.setAttribute("min", miy)
     } else if (n == "max") {
-        max = parseInt(document.getElementById("max-year").value)
+        if (ud == "up") {
+            may += 1;
+        } else if (ud == "down") {
+            may -= 1;
+        }
+        max = `${may}-01-01`;
+        maxInput.value = may;
+        minInput.setAttribute("max", may)
     }
 
+    local("set")
     currentDate = dateBetween(
         new Date(max),
         new Date(min)
