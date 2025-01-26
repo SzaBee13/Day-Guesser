@@ -160,7 +160,7 @@ const setYear = (n, ud=null) => {
         } else if (ud == "down") {
             may -= 1;
         } else {
-            miy = maxInput.value
+            may = maxInput.value
         }
         max = `${may}-01-01`;
         maxInput.value = may;
