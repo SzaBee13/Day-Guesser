@@ -102,20 +102,20 @@ const local = (td) => {
         if (localStorage.getItem("min")) {
             miy = parseInt(localStorage.getItem("min"));
             minInput.value = miy;
+            setYear('min')
         } else {
             miy = 1000;
             localStorage.setItem("min", miy);
             minInput.value = miy;
-            min = `${miy}-01-01`
         }
         if (localStorage.getItem("max")) {
             may = parseInt(localStorage.getItem("max"));
             maxInput.value = may;
+            setYear('max')
         } else {
             may = 3000;
             localStorage.setItem("max", may);
             maxInput.value = may;
-            max = `${may}-01-01`
         }
         if (localStorage.getItem("lang")) {
             setLang(localStorage.getItem("lang"))
@@ -137,9 +137,9 @@ const local = (td) => {
 
 const nullAnswer = () => {
     correct = 0;
-    correctText.innerHTML = correct;
+    correctText.innerHTML = 0;
     incorrect = 0;
-    incorrectText.innerHTML = incorrect;
+    incorrectText.innerHTML = 0;
     local("clear");
 }
 
