@@ -101,6 +101,7 @@ const local = (td) => {
         }
         if (localStorage.getItem("min")) {
             miy = parseInt(localStorage.getItem("min"));
+            minInput.value = miy
             setYear('min')
         } else {
             miy = 1000;
@@ -109,6 +110,7 @@ const local = (td) => {
         }
         if (localStorage.getItem("max")) {
             may = parseInt(localStorage.getItem("max"));
+            maxInput.value = may
             setYear('max')
         } else {
             may = 3000;
