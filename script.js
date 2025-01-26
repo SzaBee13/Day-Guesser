@@ -224,6 +224,7 @@ const init = () => {
         new Date(max),
         new Date(min)
     );
+    dateText.textContent = currentDate.toLocaleDateString();
 }
 
 window.onload = init
