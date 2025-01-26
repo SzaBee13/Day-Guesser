@@ -106,6 +106,7 @@ const local = (td) => {
             miy = 1000;
             localStorage.setItem("min", miy);
             minInput.value = miy;
+            min = `${miy}-01-01`
         }
         if (localStorage.getItem("max")) {
             may = parseInt(localStorage.getItem("max"));
@@ -114,6 +115,7 @@ const local = (td) => {
             may = 3000;
             localStorage.setItem("max", may);
             maxInput.value = may;
+            max = `${may}-01-01`
         }
         if (localStorage.getItem("lang")) {
             setLang(localStorage.getItem("lang"))
