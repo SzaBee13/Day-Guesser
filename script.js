@@ -137,9 +137,9 @@ const local = (td) => {
 
 const nullAnswer = () => {
     correct = 0;
-    correctText.innerHTML = 0;
+    document.getElementById("correct").innerHTML = 0;
     incorrect = 0;
-    incorrectText.innerHTML = 0;
+    document.getElementById("incorrect").innerHTML = 0;
     local("clear");
 }
 
