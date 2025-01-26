@@ -82,6 +82,9 @@ const checkAnswer = (answer) => {
 }
 
 const local = (td) => {
+    const minInput = document.getElementById("min-year");
+    const maxInput = document.getElementById("max-year");
+    
     if (td == "load") {
         if (localStorage.getItem("correct")) {
             correct = parseInt(localStorage.getItem("correct"));
