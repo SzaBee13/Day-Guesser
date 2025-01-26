@@ -148,6 +148,8 @@ const setYear = (n, ud=null) => {
             miy += 1;
         } else if (ud == "down") {
             miy -= 1;
+        } else {
+            miy = minInput.value
         }
         min = `${miy}-01-01`;
         minInput.value = miy;
@@ -157,6 +159,8 @@ const setYear = (n, ud=null) => {
             may += 1;
         } else if (ud == "down") {
             may -= 1;
+        } else {
+            miy = maxInput.value
         }
         max = `${may}-01-01`;
         maxInput.value = may;
