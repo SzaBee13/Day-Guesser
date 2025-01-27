@@ -130,14 +130,15 @@ const local = (td, w=null) => {
         localStorage.setItem("correct", 0);
         localStorage.setItem("incorrect", 0);
     } else if (td == "set") {
-        localStorage.setItem("correct", correct);
-        localStorage.setItem("incorrect", incorrect);
         if (w == "min") {
             localStorage.setItem("min", miy);
         } else if (w == "max") {
             localStorage.setItem("max", may);
+        } else {
+            localStorage.setItem("lang", lang)
+            localStorage.setItem("correct", correct);
+            localStorage.setItem("incorrect", incorrect);
         }
-        localStorage.setItem("lang", lang)
     }
 }
 
