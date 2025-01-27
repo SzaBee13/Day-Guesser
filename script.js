@@ -81,7 +81,7 @@ const checkAnswer = (answer) => {
     dateText.textContent = currentDate.toLocaleDateString();
 }
 
-const local = (td) => {
+const local = (td, w=null) => {
     const minInput = document.getElementById("min-year");
     const maxInput = document.getElementById("max-year");
     
@@ -132,8 +132,11 @@ const local = (td) => {
     } else if (td == "set") {
         localStorage.setItem("correct", correct);
         localStorage.setItem("incorrect", incorrect);
-        localStorage.setItem("min", miy);
-        localStorage.setItem("max", may);
+        if (w == "min") {
+            localStorage.setItem("min", miy);
+        } else if (w == "max") {
+            localStorage.setItem("max", may);
+        }
         localStorage.setItem("lang", lang)
     }
 }
@@ -172,7 +175,7 @@ const setYear = (n, ud=null) => {
         minInput.setAttribute("max", may)
     }
     
-    local("set")
+    local("set", n)
     currentDate = dateBetween(
         new Date(max),
         new Date(min)
